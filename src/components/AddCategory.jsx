@@ -9,7 +9,7 @@ export const AddCategory = () => {
     }
     const onSubmit = (event) => {
         //console.log( event.target.value );
-        event.preventDefault();
+        event.preventDefault(); // Prevent refresh when you press enter in the input
         console.log( inputValue );
     }
 
