@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const AddCategory = ({onNewCategory}) => {
+export const AddCategory = ({setCategories}) => {
 
     const [inputValue, setInputValue] = useState('');
 
@@ -12,7 +12,7 @@ export const AddCategory = ({onNewCategory}) => {
         event.preventDefault(); // Prevent refresh when you press enter in the input
         if( inputValue.trim().length <= 1) return;
         //console.log( inputValue );
-        onNewCategory( inputValue.trim() )
+        setCategories( categories => [ inputValue, ...categories])
         setInputValue('')
     }
 

@@ -3,9 +3,8 @@ import { AddCategory } from './components/AddCategory';
 
 export const GifExpertApp = () =>{
     const [categories, setCategories] = useState(['One punch']);
-    const onAddCategory = ( newCategory ) =>{
-        //console.log(newCategory)
-        setCategories([newCategory, ...categories]);
+    const onAddCategory = () =>{
+        setCategories(['Ironman', ...categories]);
         //setCategories( cat => [...cat,'Ironman']);//Asssign with callback
     }
 
@@ -14,10 +13,7 @@ export const GifExpertApp = () =>{
             {/* Title */}
             <h1>GifExpertApp</h1>
             {/* Input */}
-            <AddCategory 
-                //setCategories={setCategories}
-                onNewCategory={ value => onAddCategory(value) }
-            />
+            <AddCategory setCategories={setCategories}/>
             {/* List Gifs */}
             <button onClick={onAddCategory}>Add</button>
             <ol>
@@ -26,6 +22,8 @@ export const GifExpertApp = () =>{
                     return <li key={category}>{category}</li>
                 })}
             </ol>
+                
+
         </>
     )
 }
