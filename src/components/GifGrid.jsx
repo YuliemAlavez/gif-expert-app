@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { getGifs } from "../helpers/getGifs";
+//import { getGifs } from "../helpers/getGifs";
 import { GifItem } from "./GifItem";
+import { useFetchGifs } from "../hooks/useFetchGifs";
 
 export const GifGrid = ({category}) => {
-
-    const [images, setImages] = useState([]);
 
     //Create a error because useEffect don't allow Promise
     /*
@@ -23,13 +22,14 @@ export const GifGrid = ({category}) => {
     */
 
     //Solution 2
-    const getImages = async () => {
+    /*const getImages = async () => {
         const newImages = await getGifs( category );
         setImages(newImages);
     }
     useEffect(()=>{
         getImages();
-    },[]);
+    },[]);*/
+    const { images, isLoading} = useFetchGifs(category);
 
     return (
         <>
