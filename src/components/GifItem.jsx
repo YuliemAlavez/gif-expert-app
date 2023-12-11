@@ -9,7 +9,7 @@ export const GifItem = ({ title, url, id})=> {
     )
 }
 
-GifItems.propTypes = {
+GifItem.propTypes = {
     title: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
 }

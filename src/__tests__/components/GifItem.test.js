@@ -1,5 +1,5 @@
-import { render } from "@testing-library/react";
-import { GifItem } from "../../src/components";
+import { render, screen } from "@testing-library/react";
+import { GifItem } from "../../components";
 
 describe ('GifItem', () => {
     const title = 'Saitama';
