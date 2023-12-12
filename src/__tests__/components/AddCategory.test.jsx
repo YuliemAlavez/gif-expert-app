@@ -14,8 +14,9 @@ describe ('Test <AddCategory />', () => {
 
     it ('Call onNewCategory if input have text', () => {
         const inputValue = 'Saitama';
-        // TODO: ???
-        render( <AddCategory onNewCategory={ ()=>{} }/>)
+        const onNewCategory = jest.fn();
+
+        render( <AddCategory onNewCategory={ onNewCategory }/>)
 
         const input = screen.getByRole('textbox');
         const form = screen.getByRole('form');
@@ -25,6 +26,26 @@ describe ('Test <AddCategory />', () => {
         //screen.debug();
 
         expect( input.value ).toBe('');
+        expect( onNewCategory ).toHaveBeenCalled();
+        expect( onNewCategory ).toHaveBeenCalledTimes(1);
+        expect( onNewCategory ).toHaveBeenCalledWith(inputValue);
 
+    });
+
+    it ('Submint form without text', () => {
+        const inputValue='';
+        const onNewCategory = jest.fn();
+
+        render( <AddCategory onNewCategory={ onNewCategory }/>)
+
+        const input = screen.getByRole('textbox');
+        const form = screen.getByRole('form');
+
+        fireEvent.input( input, { target: { value: inputValue}} );
+        fireEvent.submit( form );
+
+        //expect( onNewCategory ).toHaveBeenCalledTimes(0);
+        expect( onNewCategory ).not.toHaveBeenCalled();
+        
     });
 });
